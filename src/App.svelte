@@ -1,12 +1,12 @@
 <script>
 	// @ts-nocheck
 
-	import HelloWorld from './components/HelloWorld.svelte';
-	import WelcomeWorld from './components/WelcomeWorld.svelte';
+	import Counter from './components/Counter.svelte';
 	import Sidebar from './components/Sidebar.svelte';
+	import TempratureConverter from './components/TempratureConverter.svelte';
 	const compArray = [
-		{ name: 'HelloWorld', value: HelloWorld },
-		{ name: 'WelcomeWorld', value: WelcomeWorld }
+		{ name: 'Counter', value: Counter },
+		{ name: 'Temprature Converter', value: TempratureConverter }
 	];
 	let toShow = $state(0);
 	function updateToShow(newVal) {
@@ -15,7 +15,7 @@
 </script>
 
 {$inspect(toShow)}
-<Sidebar {updateToShow} {compArray} />
+<Sidebar bind:toShow {compArray} />
 <div class="flex justify-center items-center w-full min-h-[100vh]">
 	{@render compArray[toShow].value()}
 </div>

@@ -1,5 +1,5 @@
 <script>
-	let { updateToShow, compArray } = $props();
+	let { toShow = $bindable(), compArray } = $props();
 	let drawerOpen = $state(false);
 </script>
 
@@ -27,7 +27,7 @@
 					<button
 						class="font-semibold"
 						onclick={() => {
-							updateToShow(ind);
+							toShow = ind;
 							drawerOpen = !drawerOpen;
 						}}>{ind + 1}. {comp.name}</button
 					>
