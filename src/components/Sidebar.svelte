@@ -9,7 +9,7 @@
 		<!-- Page content here -->
 		<label
 			for="my-drawer-1"
-			class="drawer-button text-2xl w-8 h-8 fixed bottom-5 left-5 rounded-full font-bold cursor-pointer flex justify-center items-center"
+			class="drawer-button btn btn-circle text-[x-large] fixed bottom-5 left-5 font-bold"
 		>
 			>
 		</label>
