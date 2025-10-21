@@ -5,10 +5,12 @@
 	import FlightBooker from './components/FlightBooker.svelte';
 	import Sidebar from './components/Sidebar.svelte';
 	import TempratureConverter from './components/TempratureConverter.svelte';
+	import Timer from './components/Timer.svelte';
 	const compArray = [
 		{ name: 'Counter', value: Counter },
 		{ name: 'Temprature Converter', value: TempratureConverter },
 		{ name: 'Flight Booker', value: FlightBooker },
+		{ name: 'Timer', value: Timer }
 	];
 	let toShow = $state(0);
 	function updateToShow(newVal) {
