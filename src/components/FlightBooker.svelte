@@ -1,30 +1,34 @@
 <script lang="ts">
 	const today = new Date().toISOString().split('T')[0];
-	let formData = $state<FormData>();
-
+	let formElement = $state<HTMLFormElement>();
+	let formData = $state<any>();
+	let returnStatus = $derived(formData && formData['flight-type'] === 'return');
 	let acceptable = $derived.by(() => {
-		if (!formData) return false;
-		const date1Value: string = (formData.get('flight-date') as string) || '';
-		const date2Value: string = (formData.get('return-date') as string) || '';
-		if (!date1Value || (!date2Value && !returnField)) return false;
-		const date1 = new Date(date1Value);
-		const date2 = new Date(date2Value);
-		return date2 > date1 || (date1 && !returnField);
+		if (formData)
+			return (!returnStatus && formData['flight-date']) ||
+				(returnStatus && formData['flight-date'] && formData['return-date'])
+				? true
+				: false;
+		else return null;
 	});
 
-	let returnField = $derived.by(() => {
-		if (!formData) return false;
-		const flightType = formData.get('flight-type');
-		return flightType === 'return';
-	});
+	function handleFormChange(e: any) {
+		formData = Object.fromEntries(new FormData(formElement));
+		formData[e.target.name] = e.target.value;
+	}
 
-	function handleForm(e: Event) {
-		const form = e.currentTarget as HTMLFormElement;
-		formData = new FormData(form);
+	function handleSubmit(e: Event) {
+		e.preventDefault();
+		alert(`you have booked a ${formData['flight-type']} flight on ${formData['flight-date']}`);
 	}
 </script>
 
-<form onchange={handleForm} class="w-40 flex flex-col gap-2">
+<form
+	bind:this={formElement}
+	class="w-40 flex flex-col gap-2"
+	onchange={handleFormChange}
+	onsubmit={handleSubmit}
+>
 	<select name="flight-type" class="select">
 		<option value="one-way">One Way Flight</option>
 		<option value="return">Return Flight</option>
@@ -34,9 +38,8 @@
 		type="date"
 		name="return-date"
 		class="input"
-		min={today}
-		style:display={returnField ? null : 'none'}
+		min={formData ? formData['flight-date'] : today}
+		style:display={returnStatus ? null : 'none'}
 	/>
 	<button class="btn" disabled={!acceptable}>Book</button>
 </form>
-{$inspect(formData)}
