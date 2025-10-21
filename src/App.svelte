@@ -8,7 +8,7 @@
 	const compArray = [
 		{ name: 'Counter', value: Counter },
 		{ name: 'Temprature Converter', value: TempratureConverter },
-		{ name: 'Flight Booker', value: FlightBooker }
+		{ name: 'Flight Booker', value: FlightBooker },
 	];
 	let toShow = $state(0);
 	function updateToShow(newVal) {
