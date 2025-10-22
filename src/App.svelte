@@ -2,6 +2,7 @@
 	// @ts-nocheck
 
 	import Counter from './components/Counter.svelte';
+	import CRUD from '../CRUD.svelte';
 	import FlightBooker from './components/FlightBooker.svelte';
 	import Sidebar from './components/Sidebar.svelte';
 	import TempratureConverter from './components/TempratureConverter.svelte';
@@ -10,7 +11,8 @@
 		{ name: 'Counter', value: Counter },
 		{ name: 'Temprature Converter', value: TempratureConverter },
 		{ name: 'Flight Booker', value: FlightBooker },
-		{ name: 'Timer', value: Timer }
+		{ name: 'Timer', value: Timer },
+		{ name: 'CRUD', value: CRUD }
 	];
 	let toShow = $state(0);
 	function updateToShow(newVal) {
