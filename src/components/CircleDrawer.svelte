@@ -5,7 +5,6 @@
 	let r = $state<number | null>(50);
 	let circle = $derived<any>({ x: x, y: y, r: r, hidden: true });
 	let circles = $state<(typeof circle)[]>([]);
-	$inspect(circles);
 	function handleClick(e: MouseEvent) {
 		x = e.offsetX;
 		y = e.offsetY;
