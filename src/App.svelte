@@ -8,6 +8,7 @@
 	import TempratureConverter from './components/TempratureConverter.svelte';
 	import Timer from './components/Timer.svelte';
 	import CircleDrawer from './components/CircleDrawer.svelte';
+	import Todo from './components/Todo.svelte';
 
 	const compArray = [
 		{ name: 'Counter', value: Counter },
@@ -15,7 +16,8 @@
 		{ name: 'Flight Booker', value: FlightBooker },
 		{ name: 'Timer', value: Timer },
 		{ name: 'CRUD', value: CRUD },
-		{ name: 'CircleDrawer', value: CircleDrawer }
+		{ name: 'CircleDrawer', value: CircleDrawer },
+		{ name: 'Todo', value: Todo }
 	];
 	let toShow = $state(0);
 	function updateToShow(newVal) {

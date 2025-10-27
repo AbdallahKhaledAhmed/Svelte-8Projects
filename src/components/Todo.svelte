@@ -1,25 +1,17 @@
-<script>
+<script lang="ts">
+	import type { Todo } from '../types';
+	import { propState } from '../utils/propState.svelte';
+	import TodoForm from './TodoForm.svelte';
+	import TodoItem from './TodoItem.svelte';
+
+	let todos = propState<Todo[]>([]);
+	let filter = propState('All');
 </script>
 
-<div>
-	<h1>Tasks App</h1>
-	<label>
-		<p>Task</p>
-		<input type="text" />
-	</label>
-	<button class="btn">Add</button>
-
-	<p>1/2 tasks completed</p>
-	<div class="flex">
-		<button>All</button>
-		<button>Todo</button>
-		<button>Done</button>
-	</div>
-	<div class="">
-		<label for="">
-			<input type="checkbox" name="" id="" />
-			<p></p>
-		</label>
-		<button>Remove</button>
+<div class="self-start w-[60%] flex flex-col gap-5 mt-5">
+	<h1 class="text-3xl font-bold">Tasks App</h1>
+	<TodoForm {todos} {filter} />
+	<div class="flex flex-col">
+		<TodoItem {todos} {filter} />
 	</div>
 </div>
